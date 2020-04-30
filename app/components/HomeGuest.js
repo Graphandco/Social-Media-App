@@ -1,8 +1,11 @@
 import React from 'react';
 
+import { Paper, Box } from '@material-ui/core';
+
 function HomeGuest() {
     return (
         <div className='container py-md-5'>
+            <Paper />
             <div className='row align-items-center'>
                 <div className='col-lg-7 py-3 py-md-5'>
                     <h1 className='display-3'>Remember Writing?</h1>
@@ -13,6 +16,11 @@ function HomeGuest() {
                         to actually writing is the key to enjoying the internet
                         again.
                     </p>
+
+                    <Box p={1} bgcolor='secondary.main'>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quos, voluptatibus
+                    </Box>
                 </div>
                 <div className='col-lg-5 pl-lg-5 pb-3 py-lg-5'>
                     <form>

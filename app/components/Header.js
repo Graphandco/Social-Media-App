@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+//import Button from '@material-ui/core/Button';
 
 function Header() {
     return (
@@ -17,7 +18,7 @@ function Header() {
                                 name='username'
                                 className='form-control form-control-sm input-dark'
                                 type='text'
-                                placeholder='Username'
+                                placeholder='Utilisateur'
                                 autoComplete='off'
                             />
                         </div>
@@ -26,13 +27,20 @@ function Header() {
                                 name='password'
                                 className='form-control form-control-sm input-dark'
                                 type='password'
-                                placeholder='Password'
+                                placeholder='Mot de passe'
                             />
                         </div>
                         <div className='col-md-auto'>
                             <button className='btn btn-success btn-sm'>
-                                Sign In
+                                Se connecter
                             </button>
+                            {/* <Button
+                                variant='outlined'
+                                color='secondary'
+                                size='small'
+                            >
+                                Se connecter
+                            </Button> */}
                         </div>
                     </div>
                 </form>
