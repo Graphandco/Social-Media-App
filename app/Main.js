@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Axios from 'axios';
+Axios.defaults.baseURL = 'http://localhost:8080';
 
 //Material UI
 import {
@@ -16,6 +18,7 @@ import HomeGuest from './components/HomeGuest';
 import About from './components/About';
 import Terms from './components/Terms';
 import Footer from './components/Footer';
+import CreatePost from './components/CreatePost';
 
 function Main() {
     //State loggIn LogOut
@@ -41,6 +44,9 @@ function Main() {
                 <Switch>
                     <Route path='/' exact>
                         {loggedIn ? <Home /> : <HomeGuest />}
+                    </Route>
+                    <Route path='/create-post'>
+                        <CreatePost />
                     </Route>
                     <Route path='/about-us'>
                         <About />
