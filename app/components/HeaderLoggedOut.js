@@ -13,7 +13,12 @@ function HeaderLoggedOut(props) {
                 password,
             });
             if (response.data) {
-                console.log(response.data);
+                localStorage.setItem('graphandcoToken', response.data.token);
+                localStorage.setItem(
+                    'graphandcoUsername',
+                    response.data.username
+                );
+                localStorage.setItem('graphandcoAvatar', response.data.avatar);
                 props.setLoggedIn(true);
             } else {
                 console.log('Incorrect');

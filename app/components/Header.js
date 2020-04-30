@@ -7,7 +7,9 @@ import HeaderLoggedIn from './HeaderLoggedIn';
 //import Button from '@material-ui/core/Button';
 
 function Header() {
-    const [loggedIn, setLoggedIn] = useState();
+    const [loggedIn, setLoggedIn] = useState(
+        Boolean(localStorage.getItem('graphandcoToken'))
+    );
 
     return (
         <header className='header-bar bg-primary mb-3'>
