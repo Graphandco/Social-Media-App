@@ -1,9 +1,24 @@
 import React from 'react';
 import Page from './Page';
+import Axios from 'axios';
 
 import { Paper, Box } from '@material-ui/core';
 
 function HomeGuest() {
+    const handleSignIn = async (e) => {
+        e.preventDefault();
+        try {
+            await Axios.post('http://localhost:8080/register', {
+                username: 'test',
+                email: 'test@test.com',
+                password: 'azerty123456789',
+            });
+            console.log('User created');
+        } catch (e) {
+            console.log('Il y a eu une erreur');
+        }
+    };
+
     return (
         <Page title='Accueil' wide={true}>
             <Paper />
@@ -24,7 +39,7 @@ function HomeGuest() {
                     </Box>
                 </div>
                 <div className='col-lg-5 pl-lg-5 pb-3 py-lg-5'>
-                    <form>
+                    <form onSubmit={handleSignIn}>
                         <div className='form-group'>
                             <label
                                 htmlFor='username-register'
