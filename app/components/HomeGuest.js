@@ -1,10 +1,11 @@
 import React from 'react';
+import Page from './Page';
 
 import { Paper, Box } from '@material-ui/core';
 
 function HomeGuest() {
     return (
-        <div className='container py-md-5'>
+        <Page title='Accueil' wide={true}>
             <Paper />
             <div className='row align-items-center'>
                 <div className='col-lg-7 py-3 py-md-5'>
@@ -81,7 +82,7 @@ function HomeGuest() {
                     </form>
                 </div>
             </div>
-        </div>
+        </Page>
     );
 }
 export default HomeGuest;
