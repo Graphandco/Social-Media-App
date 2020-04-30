@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import ExampleContext from '../ExampleContext';
 
 function HeaderLoggedIn(props) {
+    const { setLoggedIn } = useContext(ExampleContext);
+
     const handleLogout = () => {
-        props.setLoggedIn(false);
+        setLoggedIn(false);
         localStorage.removeItem('graphandcoToken');
         localStorage.removeItem('graphandcoUsername');
         localStorage.removeItem('graphandcoAvatar');
@@ -25,7 +28,7 @@ function HeaderLoggedIn(props) {
                 />
             </a>
             <Link className='btn btn-sm btn-success mr-2' to='/create-post'>
-                Create Post
+                Créer un post
             </Link>
             <button onClick={handleLogout} className='btn btn-sm btn-secondary'>
                 Se déconnecter
