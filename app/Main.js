@@ -20,12 +20,18 @@ import Terms from './components/Terms';
 import Footer from './components/Footer';
 import CreatePost from './components/CreatePost';
 import ViewSinglePost from './components/ViewSinglePost';
+import FlashMessages from './components/FlashMessages';
 
 function Main() {
-    //State loggIn LogOut
+    //States
     const [loggedIn, setLoggedIn] = useState(
         Boolean(localStorage.getItem('graphandcoToken'))
     );
+    const [flashMessages, setFlashMessages] = useState([]);
+
+    const addFlashMessage = (msg) => {
+        setFlashMessages((prev) => prev.concat(msg));
+    };
 
     //Set Material Theme
     const themes = useTheme();
@@ -41,13 +47,14 @@ function Main() {
     return (
         <ThemeProvider theme={monTheme}>
             <BrowserRouter>
+                <FlashMessages messages={flashMessages} />
                 <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
                 <Switch>
                     <Route path='/' exact>
                         {loggedIn ? <Home /> : <HomeGuest />}
                     </Route>
                     <Route path='/create-post'>
-                        <CreatePost />
+                        <CreatePost addFlashMessage={addFlashMessage} />
                     </Route>
                     <Route path='/post/:id'>
                         <ViewSinglePost />
