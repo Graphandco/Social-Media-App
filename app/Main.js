@@ -19,6 +19,7 @@ import About from './components/About';
 import Terms from './components/Terms';
 import Footer from './components/Footer';
 import CreatePost from './components/CreatePost';
+import ViewSinglePost from './components/ViewSinglePost';
 
 function Main() {
     //State loggIn LogOut
@@ -47,6 +48,9 @@ function Main() {
                     </Route>
                     <Route path='/create-post'>
                         <CreatePost />
+                    </Route>
+                    <Route path='/post/:id'>
+                        <ViewSinglePost />
                     </Route>
                     <Route path='/about-us'>
                         <About />

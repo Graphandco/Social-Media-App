@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import Page from './Page';
 import Axios from 'axios';
 
 function CreatePost() {
+    const [wasSuccessful, setWasSuccessful] = useState();
     const [title, setTitle] = useState();
     const [body, setBody] = useState();
 
     const handlePostSubmit = async (e) => {
         e.preventDefault();
         try {
-            await Axios.post('/create-post', {
+            const response = await Axios.post('/create-post', {
                 title,
                 body,
                 token: localStorage.getItem('graphandcoToken'),
             });
-            console.log("Création d'un nouveau post");
+            setWasSuccessful(response.data);
         } catch (e) {
             console.log('Il y a eu un problème');
         }
     };
+
+    if (wasSuccessful) {
+        return <Redirect to={`/post/${wasSuccessful}`} />;
+    }
 
     return (
         <Page title='Créer un nouveau post'>
