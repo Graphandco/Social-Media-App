@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -11,12 +11,19 @@ import {
 
 //My Components
 import Header from './components/Header';
+import Home from './components/Home';
 import HomeGuest from './components/HomeGuest';
 import About from './components/About';
 import Terms from './components/Terms';
 import Footer from './components/Footer';
 
 function Main() {
+    //State loggIn LogOut
+    const [loggedIn, setLoggedIn] = useState(
+        Boolean(localStorage.getItem('graphandcoToken'))
+    );
+
+    //Set Material Theme
     const themes = useTheme();
     const monTheme = createMuiTheme({
         palette: {
@@ -30,10 +37,10 @@ function Main() {
     return (
         <ThemeProvider theme={monTheme}>
             <BrowserRouter>
-                <Header />
+                <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
                 <Switch>
                     <Route path='/' exact>
-                        <HomeGuest />
+                        {loggedIn ? <Home /> : <HomeGuest />}
                     </Route>
                     <Route path='/about-us'>
                         <About />
